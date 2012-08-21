@@ -1,0 +1,7 @@
+.sign-in-form{style: "width: 50%; margin: auto"}
+  = semantic_form_for resource, :url => session_path(resource_name) do |f|
+    = f.semantic_errors
+    = f.inputs "Sign In" do
+      = f.input :email
+      = f.input :password
+      = f.action :submit, label: "Sign In", wrapper_html: { style: "float: right;" }

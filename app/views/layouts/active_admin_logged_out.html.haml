@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title NeoX Dashboard
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body{:class => [controller_name, "active_admin", "logged_in"]}
+    #wrapper
+      #header.header
+        %h1.site_title#site_title NeoX
+      #title_bar.title_bar
+        #titlebar_left
+          %h2#page_title Neo X | Sign In 
+      .flashes
+        - [:notice, :error, :message].each do |key|
+          - unless flash[key].blank?
+            %div{class: "flash flash_#{key}"}= flash[key]
+      #active_admin_content.without_sidebar
+        #main_content_wrapper
+          #main_content
+            = yield
